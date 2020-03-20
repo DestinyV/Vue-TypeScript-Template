@@ -23,8 +23,8 @@ module.exports = {
         "allowFirstLine": false
       }
     }],
-    "vue/singleline-html-element-content-newline": "off",
-    "vue/multiline-html-element-content-newline":"off",
+    "vue/singleline-html-element-content-newline": "on",
+    "vue/multiline-html-element-content-newline": "off",
     "vue/name-property-casing": ["error", "PascalCase"],
     "vue/no-v-html": "off",
     "accessor-pairs": 2,
@@ -49,7 +49,9 @@ module.exports = {
     "curly": [2, "multi-line"],
     "dot-location": [2, "property"],
     "eol-last": 2,
-    "eqeqeq": ["error", "always", {"null": "ignore"}],
+    "eqeqeq": ["error", "always", {
+      "null": "ignore"
+    }],
     "generator-star-spacing": [2, {
       "before": true,
       "after": true
@@ -192,15 +194,13 @@ module.exports = {
     }],
     "array-bracket-spacing": [2, "never"]
   },
-  overrides: [
-    {
-      files: [
-        "**/__tests__/*.{j,t}s?(x)",
-        "**/tests/unit/**/*.spec.{j,t}s?(x)"
-      ],
-      env: {
-        jest: true
-      }
+  overrides: [{
+    files: [
+      "**/__tests__/*.{j,t}s?(x)",
+      "**/tests/unit/**/*.spec.{j,t}s?(x)"
+    ],
+    env: {
+      jest: true
     }
-  ]
+  }]
 };

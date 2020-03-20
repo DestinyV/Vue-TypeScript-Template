@@ -4,13 +4,16 @@ import router from "./router";
 import store from "./store";
 
 // http://necolas.github.io/normalize.css/ a popular css reset lib
-import "normalize.css/normalize.css"
+import "normalize.css/normalize.css";
+
+// antd css lib
+import "ant-design-vue/dist/antd.css";
 
 // svg icon
-import "./icons"
+import "./icons";
 
-// permission control 
-import "./permission"
+// permission control
+import "./permission";
 
 Vue.config.productionTip = false;
 
