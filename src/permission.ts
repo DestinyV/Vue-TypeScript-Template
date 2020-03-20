@@ -1,14 +1,14 @@
 import router from "./router"
 import NProgress from "nprogress"
 import "nprogress/nprogress.css"
-import { getToken } from '@/utils/authority'
+import { getToken } from "@/utils/authority"
 import getPageTitle from "@/utils/get-page-title"
 
 // import { Message } from "ant-design-vue"
 
 NProgress.configure({ showSpinner: false, easing: 'ease', speed: 500, trickle: false })
 
-const whiteList = ["/login", "/", "/about"]
+const whiteList = ["/login", "/", "/about", "/401", "/404"]
 
 router.beforeEach((to, from, next) => {
   NProgress.start()

@@ -1,10 +1,10 @@
 import Vue from "vue";
-import VueRouter from "vue-router";
+import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
-const routes = [
+export const routes: RouteConfig[] = [
   {
     path: "/",
     name: "Home",
@@ -18,13 +18,20 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    component: () => import("@/views/About.vue")
+  }, 
+  {
+    path: "/404",
+    component: () => import("@/views/error-page/404")
+  }, 
+  {
+    path: "/401",
+    component: () => import("@/views/error-page/401")
   }
 ];
 
 const router = new VueRouter({
-  routes
+  routes: routes
 });
 
 export default router;

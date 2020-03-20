@@ -38,7 +38,7 @@ export default class App extends Vue {
   public mounted(): void {
     interface ConsoleOption {
       title: string;
-      content: string;
+      content: string | undefined;
       backgroundColor: string;
     }
 

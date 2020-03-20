@@ -2,7 +2,8 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
 
-const globalSettings = require("./src/settings.ts")
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const globalSettings = require("./src/settings.ts");
 
 function resolve(dir) {
   return path.join(__dirname, dir);
@@ -17,6 +18,7 @@ module.exports = {
       warnings: false,
       errors: true
     },
+    progress: false,
     compress: true
     // proxy: {
     //   "/api": {
@@ -39,7 +41,7 @@ module.exports = {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
     // name: name,
-    name: globalSettings.title,
+    // name: globalSettings.title,
     resolve: {
       alias: {
         "@": resolve("src")
@@ -47,8 +49,7 @@ module.exports = {
     }
   },
   chainWebpack(config) {
-    config.plugins.delete("preload"); // TODO: need test
-    config.plugins.delete("prefetch"); // TODO: need test
+    config.set("name", globalSettings.title);
 
     // set svg-sprite-loader
     config.module
@@ -107,7 +108,7 @@ module.exports = {
           antDesignVue: {
             name: "chunk-antDesignVue", // split elementUI into a single package
             priority: 20, // the weight needs to be larger than libs and app or it will be packaged into libs or app
-            test: /[\\/]node_modules[\\/]_?antDesignVue(.*)/ // in order to adapt to cnpm
+            test: /[\\/]node_modules[\\/]_?ant-design-vue(.*)/ // in order to adapt to cnpm
           },
           commons: {
             name: "chunk-commons",
