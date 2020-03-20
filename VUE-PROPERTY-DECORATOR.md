@@ -2,6 +2,15 @@
 
 ```javascript
 
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
+
+@Component
+export default class HelloWorld extends Vue {
+  @Prop() private msg!: string;
+}
+</script>
+
 1，@Component(options:ComponentOptions = {})
 
 @Component 装饰器可以接收一个对象作为参数，可以在对象中声明 components ，filters，directives等未提供装饰器的选项，也可以声明computed，watch等
