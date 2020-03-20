@@ -4,7 +4,7 @@ import "nprogress/nprogress.css"
 import { getToken } from "@/utils/authority"
 import getPageTitle from "@/utils/get-page-title"
 
-// import { Message } from "ant-design-vue"
+import { message } from "ant-design-vue"
 
 NProgress.configure({ showSpinner: false, easing: 'ease', speed: 500, trickle: false })
 
@@ -30,7 +30,7 @@ router.beforeEach((to, from, next) => {
       NProgress.done()
     }
   }
-  // Messages.Error("test router beforeEach")
+  message.error("test router beforeEach")
 })
 
 
