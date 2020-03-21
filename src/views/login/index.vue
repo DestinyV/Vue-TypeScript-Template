@@ -35,7 +35,7 @@
 }
 </style>
 <template>
-  <section class="login-container" @click="showSign">
+  <section class="login-container" @mousemove="showSign" @click="showSign">
     <!-- 背景 -->
     <img class="login-bg" src="@/assets/login-bg.jpg" alt="login" />
     <!-- time -->
@@ -65,6 +65,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { Card } from "ant-design-vue";
 import moment from "moment";
+import { debounce } from "@/utils/index.ts";
 
 @Component({
   components: {
@@ -77,6 +78,7 @@ export default class Login extends Vue {
   private week: string = moment(new Date()).format("dddd");
   private month: string = moment(new Date()).format("MMM Do");
   private toggle = false;
+  private timer: NodeJS.Timeout | null = null;
   mounted() {
     setInterval(() => {
       this.hour = moment(new Date()).format("LT");
@@ -87,9 +89,18 @@ export default class Login extends Vue {
     }, 3.6e6);
   }
   private showSign(): void {
-    this.toggle = false;
-    this.toggle = true;
-    console.log("showSign", this.toggle);
+    const mouserEvent = debounce(
+      () => {
+        this.toggle = true;
+        this.timer = null;
+        this.timer = setTimeout(() => {
+          this.toggle = false;
+        }, 30 * 1000);
+      },
+      3 * 1000,
+      true
+    );
+    mouserEvent();
   }
 }
 </script>
