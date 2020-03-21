@@ -38,24 +38,26 @@
   <section class="login-container" @click="showSign">
     <!-- 背景 -->
     <img class="login-bg" src="@/assets/login-bg.jpg" alt="login" />
-    <!-- 登录 -->
-    <div class="show-sign">
-      <a-card hoverable :bordered="false" style="width: 240px">
-        <img
-          alt="example"
-          src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-          slot="cover"
-        />
-        <a-card-meta title="Europe Street beat">
-          <template slot="description">www.instagram.com</template>
-        </a-card-meta>
-      </a-card>
-    </div>
     <!-- time -->
-    <div class="show-time">
-      <div class="show-time-hour">{{ hour }}</div>
-      <div class="show-time-day">{{ month }},{{ week }}</div>
-    </div>
+    <transition-group name="time">
+      <!-- 登录 -->
+      <div v-if="toggle" class="show-sign" key="show-sign">
+        <a-card hoverable :bordered="false" style="width: 240px">
+          <img
+            alt="example"
+            src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+            slot="cover"
+          />
+          <a-card-meta title="Europe Street beat">
+            <template slot="description">www.instagram.com</template>
+          </a-card-meta>
+        </a-card>
+      </div>
+      <div v-else class="show-time" key="show-time">
+        <div class="show-time-hour">{{ hour }}</div>
+        <div class="show-time-day">{{ month }},{{ week }}</div>
+      </div>
+    </transition-group>
   </section>
 </template>
 
