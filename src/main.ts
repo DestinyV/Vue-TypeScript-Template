@@ -9,6 +9,9 @@ import "normalize.css/normalize.css";
 // antd css lib
 import "ant-design-vue/dist/antd.css";
 
+// global less style
+import "./styles/index.less";
+
 // svg icon
 import "./icons";
 
