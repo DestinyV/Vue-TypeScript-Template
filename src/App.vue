@@ -5,6 +5,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  width: 100%;
+  height: 100%;
 }
 
 #nav {
@@ -23,10 +25,10 @@
 
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
+    <!-- <div id="nav">
+      <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>
-    </div>
+    </div>-->
     <router-view />
   </div>
 </template>
@@ -38,7 +40,7 @@ export default class App extends Vue {
   public mounted(): void {
     interface ConsoleOption {
       title: string;
-      content: string | undefined;
+      content: string;
       backgroundColor: string;
     }
 
@@ -68,7 +70,7 @@ export default class App extends Vue {
     }
     Console({
       title: "项目环境",
-      content: process.env.NODE_ENV,
+      content: process.env.NODE_ENV as string,
       backgroundColor: "#1475b2"
     });
     Console({ title: "Version", content: "1.0.0", backgroundColor: "#42c02e" });

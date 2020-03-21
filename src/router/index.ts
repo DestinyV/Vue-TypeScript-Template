@@ -6,6 +6,18 @@ Vue.use(VueRouter);
 
 export const routes: RouteConfig[] = [
   {
+    path: "/404",
+    component: () => import("@/views/error-page/404.vue")
+  },
+  {
+    path: "/401",
+    component: () => import("@/views/error-page/401.vue")
+  },
+  {
+    path: "/login",
+    component: () => import("@/views/login/index.vue")
+  },
+  {
     path: "/",
     name: "Home",
     meta: { title: "首页" },
@@ -19,14 +31,6 @@ export const routes: RouteConfig[] = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import("@/views/About.vue")
-  },
-  {
-    path: "/404",
-    component: () => import("@/views/error-page/404.vue")
-  },
-  {
-    path: "/401",
-    component: () => import("@/views/error-page/401.vue")
   }
 ];
 

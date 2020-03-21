@@ -13,7 +13,7 @@ NProgress.configure({
   trickle: false
 });
 
-const whiteList = ["/login", "/", "/about", "/401", "/404"];
+const whiteList = ["/login", "/401", "/404"];
 
 router.beforeEach((to, from, next) => {
   NProgress.start();
@@ -35,8 +35,9 @@ router.beforeEach((to, from, next) => {
       NProgress.done();
     }
   }
-  message.error("test router beforeEach");
+  message.success(`成功进入路由${to.path}`);
 });
+
 router.afterEach(() => {
   NProgress.done();
 });
