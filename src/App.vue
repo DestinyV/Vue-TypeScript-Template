@@ -24,19 +24,29 @@
 </style>
 
 <template>
-  <div id="app">
-    <!-- <div id="nav">
+  <!-- <div id="app"> -->
+  <a-locale-provider :locale="locale" id="app">
+    <router-view />
+  </a-locale-provider>
+  <!-- <div id="nav">
       <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>
-    </div>-->
-    <router-view />
-  </div>
+  </div>-->
+  <!-- </div> -->
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-@Component
+import { LocaleProvider } from "ant-design-vue";
+// eslint-disable-next-line @typescript-eslint/camelcase
+import zh_CN from "ant-design-vue/lib/locale-provider/zh_CN";
+@Component({
+  components: {
+    ALocaleProvider: LocaleProvider
+  }
+})
 export default class App extends Vue {
+  locale: any = zh_CN;
   public mounted(): void {
     interface ConsoleOption {
       title: string;

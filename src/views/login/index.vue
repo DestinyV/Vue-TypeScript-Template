@@ -41,18 +41,7 @@
     <!-- time -->
     <transition-group name="time">
       <!-- 登录 -->
-      <div v-if="toggle" class="show-sign" key="show-sign">
-        <a-card hoverable :bordered="false" style="width: 240px">
-          <img
-            alt="example"
-            src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-            slot="cover"
-          />
-          <a-card-meta title="Europe Street beat">
-            <template slot="description">www.instagram.com</template>
-          </a-card-meta>
-        </a-card>
-      </div>
+      <div v-if="toggle" class="show-sign" key="show-sign"></div>
       <div v-else class="show-time" key="show-time">
         <div class="show-time-hour">{{ hour }}</div>
         <div class="show-time-day">{{ month }},{{ week }}</div>
@@ -63,14 +52,19 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { Card } from "ant-design-vue";
+import { Input, Icon, Form, Button } from "ant-design-vue";
 import moment from "moment";
-import { debounce } from "@/utils/index.ts";
+Vue.use(Form);
+// import { debounce } from "@/utils/index.ts";
 
 @Component({
   components: {
-    ACard: Card,
-    ACardMeta: Card.Meta
+    AInput: Input,
+    AForm: Form,
+    AFormItem: Form.Item,
+    AIcon: Icon,
+    AInputPassword: Input.Password,
+    AButton: Button
   }
 })
 export default class Login extends Vue {
@@ -89,18 +83,11 @@ export default class Login extends Vue {
     }, 3.6e6);
   }
   private showSign(): void {
-    const mouserEvent = debounce(
-      () => {
-        this.toggle = true;
-        this.timer = null;
-        this.timer = setTimeout(() => {
-          this.toggle = false;
-        }, 30 * 1000);
-      },
-      3 * 1000,
-      true
-    );
-    mouserEvent();
+    this.toggle = true;
+    this.timer = null;
+    this.timer = setTimeout(() => {
+      this.toggle = false;
+    }, 60 * 1000);
   }
 }
 </script>

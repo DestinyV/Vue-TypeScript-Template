@@ -57,6 +57,7 @@ module.exports = {
   },
   chainWebpack(config) {
     config.set("name", globalSettings.title);
+    config.resolve.symlinks(true);
 
     // set svg-sprite-loader
     config.module
@@ -126,5 +127,9 @@ module.exports = {
       });
       config.optimization.runtimeChunk("single");
     });
-  }
+  },
+  css: {
+    extract: true
+  },
+  runtimeCompiler: true
 };
