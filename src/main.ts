@@ -12,6 +12,10 @@ import "ant-design-vue/dist/antd.css";
 // global less style
 import "./styles/index.less";
 
+// moment
+import moment from "moment";
+moment.locale("zh-cn");
+
 // svg icon
 import "./icons";
 

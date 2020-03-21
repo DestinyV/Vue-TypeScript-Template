@@ -2,6 +2,8 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
 
+// const webpack = require("webpack");
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const globalSettings = require("./src/settings.ts");
 
@@ -47,6 +49,11 @@ module.exports = {
         "@": resolve("src")
       }
     }
+    // plugins: [
+    //   new webpack.ProvidePlugin({
+    //     moment: "moment"
+    //   })
+    // ]
   },
   chainWebpack(config) {
     config.set("name", globalSettings.title);
@@ -89,12 +96,10 @@ module.exports = {
       config
         .plugin("ScriptExtHtmlWebpackPlugin")
         .after("html")
-        .use("script-ext-html-webpack-plugin", [
-          {
-            // `runtime` must same as runtimeChunk name. default is `runtime`
-            inline: /runtime\..*\.js$/
-          }
-        ])
+        .use("script-ext-html-webpack-plugin", [{
+          // `runtime` must same as runtimeChunk name. default is `runtime`
+          inline: /runtime\..*\.js$/
+        }])
         .end();
       config.optimization.splitChunks({
         chunks: "all",

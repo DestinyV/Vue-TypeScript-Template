@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   /**
    * @type {string} 项目名称
    * @description 项目名称
