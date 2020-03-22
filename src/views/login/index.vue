@@ -34,18 +34,19 @@
   }
 }
 </style>
+
 <template>
   <section class="login-container" @mousemove="showSign" @click="showSign">
     <!-- 背景 -->
     <img class="login-bg" src="@/assets/login-bg.jpg" alt="login" />
-    <!-- time -->
+    <!-- time&sign -->
     <transition-group name="time">
       <!-- 登录 -->
       <div v-if="toggle" class="show-sign" key="show-sign">
+        <a-avatar :size="80" icon="user" />
         <a-form
           layout="horizontal"
-          :label-col="{ span: 5 }"
-          :wrapper-col="{ span: 20 }"
+          :wrapper-col="{ span: 24 }"
           :form="form"
           :selfUpdate="true"
           @submit="handleSubmit"
@@ -82,6 +83,7 @@
           </a-form-item>
         </a-form>
       </div>
+      <!-- show time -->
       <div v-else class="show-time" key="show-time">
         <div class="show-time-hour">{{ hour }}</div>
         <div class="show-time-day">{{ month }},{{ week }}</div>
@@ -92,7 +94,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { Input, Icon, Form, Button, Checkbox } from "ant-design-vue";
+import { Input, Icon, Form, Button, Checkbox, Avatar } from "ant-design-vue";
 import moment from "moment";
 import { setToken } from "@/utils/authority";
 // import { debounce } from "@/utils/index.ts";
@@ -105,7 +107,8 @@ import { setToken } from "@/utils/authority";
     AIcon: Icon,
     AInputPassword: Input.Password,
     AButton: Button,
-    ACheckbox: Checkbox
+    ACheckbox: Checkbox,
+    AAvatar: Avatar
   }
 })
 export default class Login extends Vue {
@@ -135,7 +138,7 @@ export default class Login extends Vue {
     e.preventDefault();
     this.form.validateFields((err: Error, values: any) => {
       if (!err) {
-        console.log("Received values of form: ", values);
+        // console.log("Received values of form: ", values);
         // 登录成功需添加自定义逻辑然后设置token
         setToken("loginToken");
         this.$router.push("/");

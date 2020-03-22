@@ -32,7 +32,7 @@ export function validLowerCase(str: string): boolean {
  * @param {string} str
  * @returns {Boolean}
  */
-export function validUpperCase(str: string) : boolean {
+export function validUpperCase(str: string): boolean {
   const reg = /^[A-Z]+$/;
   return reg.test(str);
 }
@@ -41,7 +41,7 @@ export function validUpperCase(str: string) : boolean {
  * @param {string} str
  * @returns {Boolean}
  */
-export function validAlphabets(str: string) :boolean {
+export function validAlphabets(str: string): boolean {
   const reg = /^[A-Za-z]+$/;
   return reg.test(str);
 }
@@ -50,7 +50,7 @@ export function validAlphabets(str: string) :boolean {
  * @param {string} email
  * @returns {Boolean}
  */
-export function validEmail(email: string) : boolean {
+export function validEmail(email: string): boolean {
   const reg = /^(([^<>()[]\\.,;:\s@"]+(\.[^<>()[]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return reg.test(email);
 }
