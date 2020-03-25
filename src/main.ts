@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import SvgIcon from "vue-svgicon";
 
 // http://necolas.github.io/normalize.css/ a popular css reset lib
 import "normalize.css/normalize.css";
@@ -17,7 +18,11 @@ import moment from "moment";
 moment.locale("zh-cn");
 
 // svg icon
-import "./icons";
+Vue.use(SvgIcon, {
+  tagName: "svg-icon",
+  defaultWidth: "1em",
+  defaultHeight: "1em"
+});
 
 // permission control
 import "./permission";

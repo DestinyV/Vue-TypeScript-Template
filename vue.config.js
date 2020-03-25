@@ -5,7 +5,7 @@ const path = require("path");
 // const webpack = require("webpack");
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const globalSettings = require("./src/settings.ts");
+const name = "Vue-TypeScript-Template";
 
 function resolve(dir) {
   return path.join(__dirname, dir);
@@ -56,24 +56,7 @@ module.exports = {
     // ]
   },
   chainWebpack(config) {
-    config.set("name", globalSettings.title);
-
-    // set svg-sprite-loader
-    config.module
-      .rule("svg")
-      .exclude.add(resolve("src/icons/index.ts"))
-      .end();
-    config.module
-      .rule("icons")
-      .test(/\.svg$/)
-      .include.add(resolve("src/icons/index.ts"))
-      .end()
-      .use("svg-sprite-loader")
-      .loader("svg-sprite-loader")
-      .options({
-        symbolId: "icon-[name]"
-      })
-      .end();
+    config.set("name", name);
 
     // set preserveWhitespace
     config.module

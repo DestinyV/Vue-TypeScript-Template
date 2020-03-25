@@ -2,7 +2,14 @@ import router from "./router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { getToken } from "@/utils/authority";
-import getPageTitle from "@/utils/get-page-title";
+import setting from "@/settings.ts";
+
+function getPageTitle(pageTitle: string): string {
+  if (pageTitle) {
+    return `${pageTitle} - ${setting.title}`;
+  }
+  return `${setting.title}`;
+}
 
 import { message } from "ant-design-vue";
 
